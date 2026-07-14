@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주 - 화산섬의 매력</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-ocean: #1a4d4f;
+            --color-sand: #d4a574;
+            --color-sky: #f5f5f0;
+            --color-mystery: #6b5b95;
+            --color-text: #333333;
+            --color-accent: #2d7a7d;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', system-ui, sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-sky);
+        }
+
+        /* 헤더 */
+        header {
+            background: linear-gradient(135deg, var(--color-ocean) 0%, var(--color-accent) 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        /* 메인 컨텐츠 */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 소개 섹션 */
+        .intro-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--color-sand);
+        }
+
+        .intro-section h2 {
+            font-size: 2rem;
+            color: var(--color-ocean);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* 특징 그리드 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-ocean);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* 관광지 섹션 */
+        .attractions {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .attractions h2 {
+            font-size: 2rem;
+            color: var(--color-ocean);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .attraction-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .attraction-item {
+            padding: 1.5rem;
+            background: var(--color-sky);
+            border-radius: 6px;
+            border-left: 3px solid var(--color-sand);
+            transition: background 0.3s ease;
+        }
+
+        .attraction-item:hover {
+            background: #efefea;
+        }
+
+        .attraction-item h4 {
+            color: var(--color-ocean);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .attraction-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* 푸터 */
+        footer {
+            background: var(--color-ocean);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .intro-section,
+            .attractions {
+                padding: 1.5rem;
+            }
+
+            .intro-section h2,
+            .attractions h2 {
+                font-size: 1.5rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 애니메이션 */
+        @media (prefers-reduced-motion: no-preference) {
+            header {
+                animation: fadeInDown 0.8s ease;
+            }
+
+            .intro-section,
+            .feature-card,
+            .attractions {
+                animation: fadeInUp 0.8s ease;
+            }
+
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>제주</h1>
+        <p>화산섬의 신비로운 매력을 만나다</p>
+    </header>
+
+    <main>
+        <!-- 소개 섹션 -->
+        <section class="intro-section">
+            <h2>제주에 대해</h2>
+            <p>
+                제주도는 한반도 최남단에 위치한 국내 유일의 섬 자치도입니다. 
+                약 188만 년 전 화산 폭발로 형성된 제주는 독특한 자연 경관과 
+                풍부한 문화유산을 자랑합니다. 한라산의 장엄한 자태부터 
+                검은 모래 해변까지, 제주는 자연이 선사한 최고의 선물입니다.
+            </p>
+        </section>
+
+        <!-- 특징 섹션 -->
+        <section class="features">
+            <div class="feature-card">
+                <h3>
+                    <span class="feature-icon">🏔️</span>
+                    한라산
+                </h3>
+                <p>
+                    대한민국 최고봉으로 해발 1,947m. 
+                    사계절 다양한 경험을 선사하는 제주의 상징입니다.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>
+                    <span class="feature-icon">🌊</span>
+                    해양 문화
+                </h3>
+                <p>
+                    천년의 해녀 문화와 해양 생물 다양성으로 
+                    유네스코 세계자연유산에 등재되었습니다.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>
+                    <span class="feature-icon">🌺</span>
+                    독특한 자연
+                </h3>
+                <p>
+                    검은 현무암 해안, 용암동굴, 오름 등 
+                    화산섬만의 특색 있는 지형을 자랑합니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- 관광지 섹션 -->
+        <section class="attractions">
+            <h2>추천 관광지</h2>
+            <div class="attraction-list">
+                <div class="attraction-item">
+                    <h4>성산일출봉</h4>
+                    <p>
+                        제주 동쪽 해안에 위치한 화산 응회암 언덕. 
+                        일출의 아름다움으로 유명하며, 유네스코 세계자연유산입니다.
+                    </p>
+                </div>
+
+                <div class="attraction-item">
+                    <h4>제주 민속자연사박물관</h4>
+                    <p>
+                        제주의 자연사와 민속 문화를 한눈에 볼 수 있는 곳. 
+                        제주인의 삶과 문화를 이해하는 데 최적의 장소입니다.
+                    </p>
+                </div>
+
+                <div class="attraction-item">
+                    <h4>용머리해안</h4>
+                    <p>
+                        약 5만 년 전 화산 폭발로 형성된 독특한 용 모양 절벽. 
+                        검은 현무암이 만드는 신비로운 경관이 일품입니다.
+                    </p>
+                </div>
+
+                <div class="attraction-item">
+                    <h4>만장굴</h4>
+                    <p>
+                        약 7,000년 전 형성된 용암동굴. 
+                        길이 7,416m로 아시아 최대 규모의 용암동굴입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 제주 소개 페이지 | GitHub Pages 배포 실습</p>
+    </footer>
+</body>
+</html>
